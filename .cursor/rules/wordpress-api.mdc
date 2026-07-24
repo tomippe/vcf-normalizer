@@ -1,0 +1,28 @@
+---
+description: WordPress REST API の設定情報と使い方
+alwaysApply: true
+---
+
+# WordPress REST API 設定
+
+このプロジェクトは apps.tomippe.jp で公開されているアプリのリポジトリです。
+WordPress REST API でアプリ紹介ページを操作できます。
+
+## 設定ファイル
+
+- **`~/.wp-env`** — WordPress共通の認証情報（サイトURL、ユーザー名、アプリケーションパスワード、投稿タイプ）
+- **`.env`** — このアプリ固有の情報（投稿ID、ページURL）
+
+## 使い方
+
+```bash
+source ~/.wp-env && source .env
+# ページ情報取得
+curl -s -u "$WP_USER:$WP_APP_PASSWORD" "$WP_SITE_URL/wp-json/wp/v2/$WP_APP_POST_TYPE/$WP_APP_POST_ID"
+# ACFフィールド含む編集用取得
+curl -s -u "$WP_USER:$WP_APP_PASSWORD" "$WP_SITE_URL/wp-json/wp/v2/$WP_APP_POST_TYPE/$WP_APP_POST_ID?context=edit"
+# 更新（例: 本文を更新）
+curl -s -X POST -u "$WP_USER:$WP_APP_PASSWORD" -H "Content-Type: application/json" -d "{\"content\":\"新しい本文\"}" "$WP_SITE_URL/wp-json/wp/v2/$WP_APP_POST_TYPE/$WP_APP_POST_ID"
+# ACFフィールド更新
+curl -s -X POST -u "$WP_USER:$WP_APP_PASSWORD" -H "Content-Type: application/json" -d "{\"acf\":{\"field-name\":\"value\"}}" "$WP_SITE_URL/wp-json/wp/v2/$WP_APP_POST_TYPE/$WP_APP_POST_ID"
+```

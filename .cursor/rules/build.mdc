@@ -1,0 +1,23 @@
+---
+description: vcf-normalizer のビルド仕様
+alwaysApply: true
+---
+
+# vcf-normalizer ビルド仕様
+
+**共通ルール（ファイル編集・ビルド・コミットの前に Read すること）:**
+
+- `../build-common/.cursor/rules/build-system.mdc`
+
+## 概要
+
+- **種別**: 静的 Web（Vite + TypeScript）
+- **ビルド**: `./build.sh` または `npm run build`（成果物 `build/`）
+- **開発**: `npm run dev`（既定ポート **5180**）。`base` は **`/vcf-normalizer/`** のため **`http://localhost:5180/vcf-normalizer/`** で開く
+- **デプロイ**: `./build.sh` → `../apps.tomippe.jp/vcf-normalizer/` → FTP `apps/vcf-normalizer/`
+- **紹介ページの Run リンク**: WordPress では `app-weburl` は空欄（テーマ既定で `…/run/`）。ビルドで `build/run/index.html` をルートと同一にコピー済み
+
+## 固有
+
+- 連絡先 VCF をブラウザ内で正規化（バイト列の文字コード推定・2.1/3.0・QP/CHARSET → UTF-8 プレーン vCard 3.0）
+- サーバにファイルを送らない

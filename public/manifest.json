@@ -1,0 +1,26 @@
+{
+  "name": "VCF Normalizer",
+  "short_name": "VCF Normalizer",
+  "version": "1.0.0",
+  "description": "連絡先VCFをブラウザ内で一括正規化し、UTF-8 の vCard 3.0 へ変換",
+  "lang": "ja",
+  "dir": "ltr",
+  "start_url": "/vcf-normalizer/run/",
+  "scope": "/vcf-normalizer/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#FF9E5E",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/vcf-normalizer/favicon-48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/vcf-normalizer/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
